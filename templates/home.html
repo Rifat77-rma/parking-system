@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-image: url('static/banner.jpg'); /* Add your image path here */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px; /* Adjust width as needed */
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .header-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #5C6BC0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .header-buttons button:hover {
+            background-color: #3F51B5;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #5C6BC0;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3F51B5;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #3F51B5;
+            text-decoration: none;
+        }
+
+        .user-type {
+            margin-bottom: 15px;
+        }
+
+        .user-type label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-buttons">
+            <button onclick="window.open('about.html', '_blank')">About</button>
+            <button onclick="window.open('contact.html', '_blank')">Contact Us</button>
+            <button onclick="window.open('ratings.html', '_blank')">Ratings and Reviews</button>
+          
+        </div>
+
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="userId">User ID:</label>
+                    <input type="text" id="userId" name="userId" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+              <p class="register-link">Don't have an account? <a href="register.html">Register here</a></p>
+              <p class="register-link"> <a href="employee-login.html">Login as Employee</a></p>
+              
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event){
+            event.preventDefault();
+            var userType = document.querySelector('input[name="userType"]:checked').value;
+            alert('Login Successful as ' + userType + '!');
+            // Add further login logic here
+        });
+    </script>
+</body>
+</html>
