@@ -3,92 +3,259 @@
 <head>
     <title>Registration Form</title>
     <style>
-        /* Similar CSS styling as provided earlier */
-        /* Add here the CSS styles similar to your other pages */
-        /* ... */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('static/banner.jpg'); /* Add your image path here */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #5C6BC0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: #3F51B5;
+            text-decoration: none;
+        }
+
+        .confirmation-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .confirmation-popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .confirmation-popup-buttons {
+            margin-top: 20px;
+        }
+
+        .confirmation-popup-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .confirmation-popup-buttons .confirm-button {
+            background-color: #5C6BC0;
+            color: white;
+        }
+
+        .confirmation-popup-buttons .cancel-button {
+            background-color: #EF5350;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Registration Form</h2>
+        <div class="error" id="password-error"></div>
         <form id="registrationForm">
             <div class="input-group">
-                <label>First Name:</label>
-                <input type="text" id="firstName" required>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
             </div>
             <div class="input-group">
-                <label>Surname:</label>
-                <input type="text" id="surname" required>
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
             </div>
             <div class="input-group">
-                <label>Contact No.:</label>
-                <input type="tel" id="contactNumber" required>
+                <label for="contactNo">Contact No.:</label>
+                <input type="tel" id="contactNo" name="contactNo" required>
             </div>
             <div class="input-group">
-                <label>Password:</label>
-                <input type="password" id="password" required minlength="7" title="Passwords must be at least 7 characters">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required minlength="7">
             </div>
             <div class="input-group">
-                <label>Confirm Password:</label>
-                <input type="password" id="confirmPassword" required>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required minlength="7">
             </div>
             <div class="input-group">
-                <label>Emergency Contact:</label>
-                <input type="tel" id="emergencyContact" required>
+                <label for="emergencyContact">Emergency Contact:</label>
+                <input type="tel" id="emergencyContact" name="emergencyContact" required>
             </div>
             <div class="input-group">
-                <label>National ID Number:</label>
-                <input type="text" id="nationalId" required>
+                <label for="nationalID">National ID:</label>
+                <input type="text" id="nationalID" name="nationalID" required>
             </div>
             <div class="input-group">
-                <label>House:</label>
-                <input type="text" id="house" required>
+                <label for="house">House:</label>
+                <input type="text" id="house" name="house" required>
             </div>
             <div class="input-group">
-                <label>Street:</label>
-                <input type="text" id="street" required>
+                <label for="street">Street:</label>
+                <input type="text" id="street" name="street" required>
             </div>
             <div class="input-group">
-                <label>Area:</label>
-                <input type="text" id="area" required>
+                <label for="area">Area:</label>
+                <input type="text" id="area" name="area" required>
             </div>
             <div class="input-group">
-                <label>City:</label>
-                <input type="text" id="city" required>
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
             </div>
             <div class="input-group">
-                <label>User Type:</label>
-                <select id="userType" required>
-                    <option value="customer">Customer</option>
-                    <option value="employee">Employee</option>
+                <label for="userType">User Type:</label>
+                <select id="userType" name="userType" required>
+                    <option value="Customer">Customer</option>
+                    <option value="Employee">Employee</option>
                 </select>
             </div>
-            <button type="button" onclick="confirmRegistration()">Confirm Registration</button>
-            <button type="reset">Cancel Registration</button>
-        </form>
-    </div>
+          <button type="button" id="confirmRegistration">Confirm Registration</button>
+                  <button type="button" id="cancelRegistration">Cancel Registration</button>
+              </form>
+              <div class="login-button">
+                  Already have an account? Try <a href="index.html">Logging In</a> Instead.
+              </div>
+          </div>
+
+          <div class="confirmation-popup" id="confirmationPopup">
+              <div class="confirmation-popup-content">
+                  <p>Welcome to the family. Here is your designated ID:**** <span id="userID"></span></p>
+                  <div class="confirmation-popup-buttons">
+                      <button class="confirm-button" id="confirmPopup">OK</button>
+                      <button class="cancel-button" id="cancelPopup">Cancel Registration</button>
+                  </div>
+              </div>
+          </div>
+
 
     <script>
-        function confirmRegistration() {
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirmPassword').value;
+        const registrationForm = document.getElementById("registrationForm");
+        const passwordField = document.getElementById("password");
+        const confirmPasswordField = document.getElementById("confirmPassword");
+        const passwordError = document.getElementById("password-error");
+        const confirmationPopup = document.getElementById("confirmationPopup");
+        const userIDSpan = document.getElementById("userID");
 
-            if (password.length < 7) {
-                alert('Please check your password again. Passwords must be at least 7 characters.');
-                return;
+        // Password validation
+        confirmPasswordField.addEventListener("input", () => {
+            if (passwordField.value !== confirmPasswordField.value) {
+                passwordError.innerText = "Passwords do not match!";
+            } else {
+                passwordError.innerText = "";
             }
+        });
 
-            if (password !== confirmPassword) {
-                alert('Please check your password again. The passwords do not match.');
-                return;
-            }
+        // Show password length message on focus
+        passwordField.addEventListener("focus", () => {
+            passwordError.innerText = "Passwords must be at least 7 characters";
+        });
 
-            var confirmation = confirm('Are you sure you want to submit the registration?');
-            if (confirmation) {
-                // Here you would typically handle the form submission.
-                alert('Welcome to the family. Here is your designated ID: ****');
-                // Form submission code or redirection goes here.
+        // Confirmation popup
+        const confirmRegistrationButton = document.getElementById("confirmRegistration");
+        const cancelRegistrationButton = document.getElementById("cancelRegistration");
+        const confirmPopupButton = document.getElementById("confirmPopup");
+        const cancelPopupButton = document.getElementById("cancelPopup");
+
+        confirmRegistrationButton.addEventListener("click", () => {
+            if (passwordField.value !== confirmPasswordField.value) {
+                passwordError.innerText = "Passwords do not match!";
+            } else if (passwordField.value.length < 7) {
+                passwordError.innerText = "Passwords must be at least 7 characters";
+            } else {
+                passwordError.innerText = "";
+                confirmationPopup.style.display = "block";
             }
+        });
+
+        cancelRegistrationButton.addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+
+        confirmPopupButton.addEventListener("click", () => {
+            // Simulate generating a random user ID (customize this part)
+            const userType = document.getElementById("userType").value;
+            const randomID = generateRandomID(userType);
+            userIDSpan.innerText = randomID;
+            confirmationPopup.style.display = "none";
+            window.location.href = "index.html";
+        });
+
+        cancelPopupButton.addEventListener("click", () => {
+            confirmationPopup.style.display = "none";
+        });
+
+        // Function to generate a random ID based on user type
+        function generateRandomID(userType) {
+            const digits = Math.floor(Math.random() * 9000) + 1000;
+            const userTypeDigit = userType === "Employee" ? "1" : "0";
+            return digits + userTypeDigit;
         }
     </script>
 </body>
