@@ -82,39 +82,37 @@
             text-decoration: none;
         }
 
-        .user-type {
+        .Customer-type {
             margin-bottom: 15px;
         }
 
-        .user-type label {
+        .Customer-type label {
             margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-buttons">
-            <button onclick="window.open('about.html', '_blank')">About</button>
-            <button onclick="window.open('contact.html', '_blank')">Contact Us</button>
-            <button onclick="window.open('ratings.html', '_blank')">Ratings and Reviews</button>
-          
-        </div>
+      <div class="container">
+      <div class="header-buttons">
+        <button onclick="window.location.href='/about'">About</button>
+        <button onclick="window.location.href='/contact'">Contact Us</button>
+        <button onclick="window.location.href='/ratings'">Ratings and Reviews</button>
+
+      </div>
 
         <div class="login-container">
             <h2>Login</h2>
             <form id="loginForm">
                 <div class="input-group">
-                    <label for="userId">User ID:</label>
-                    <input type="text" id="userId" name="userId" required>
+                    <label for="CustomerId">Customer ID:</label>
+                    <input type="text" id="CustomerId" name="CustomerId" required>
                 </div>
                 <div class="input-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
                 <button type="submit">Login</button>
-              <p class="register-link">Don't have an account? <a href="register.html">Register here</a></p>
-              <p class="register-link"> <a href="employee-login.html">Login as Employee</a></p>
-              
+                <p class="register-link">Don't have an account? <a href="register.html">Register here</a></p>
             </form>
         </div>
     </div>
@@ -122,8 +120,8 @@
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(event){
             event.preventDefault();
-            var userType = document.querySelector('input[name="userType"]:checked').value;
-            alert('Login Successful as ' + userType + '!');
+            var CustomerType = document.querySelector('input[name="CustomerType"]:checked').value;
+            alert('Login Successful as ' + CustomerType + '!');
             // Add further login logic here
         });
     </script>

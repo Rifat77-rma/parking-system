@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        /* Similar CSS styling as provided earlier */
+        /* Add here the CSS styles similar to your other pages */
+        /* ... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <div class="input-group">
+                <label>First Name:</label>
+                <input type="text" id="firstName" required>
+            </div>
+            <div class="input-group">
+                <label>Surname:</label>
+                <input type="text" id="surname" required>
+            </div>
+            <div class="input-group">
+                <label>Contact No.:</label>
+                <input type="tel" id="contactNumber" required>
+            </div>
+            <div class="input-group">
+                <label>Password:</label>
+                <input type="password" id="password" required minlength="7" title="Passwords must be at least 7 characters">
+            </div>
+            <div class="input-group">
+                <label>Confirm Password:</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+            <div class="input-group">
+                <label>Emergency Contact:</label>
+                <input type="tel" id="emergencyContact" required>
+            </div>
+            <div class="input-group">
+                <label>National ID Number:</label>
+                <input type="text" id="nationalId" required>
+            </div>
+            <div class="input-group">
+                <label>House:</label>
+                <input type="text" id="house" required>
+            </div>
+            <div class="input-group">
+                <label>Street:</label>
+                <input type="text" id="street" required>
+            </div>
+            <div class="input-group">
+                <label>Area:</label>
+                <input type="text" id="area" required>
+            </div>
+            <div class="input-group">
+                <label>City:</label>
+                <input type="text" id="city" required>
+            </div>
+            <div class="input-group">
+                <label>User Type:</label>
+                <select id="userType" required>
+                    <option value="customer">Customer</option>
+                    <option value="employee">Employee</option>
+                </select>
+            </div>
+            <button type="button" onclick="confirmRegistration()">Confirm Registration</button>
+            <button type="reset">Cancel Registration</button>
+        </form>
+    </div>
+
+    <script>
+        function confirmRegistration() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password.length < 7) {
+                alert('Please check your password again. Passwords must be at least 7 characters.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Please check your password again. The passwords do not match.');
+                return;
+            }
+
+            var confirmation = confirm('Are you sure you want to submit the registration?');
+            if (confirmation) {
+                // Here you would typically handle the form submission.
+                alert('Welcome to the family. Here is your designated ID: ****');
+                // Form submission code or redirection goes here.
+            }
+        }
+    </script>
+</body>
+</html>
