@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            background-image: url('static/banner.jpg'); /* Add your image path here */
+            background-image: url('static/banner.jpg'); 
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -43,13 +43,7 @@
             margin-bottom: 5px;
         }
 
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
+        .input-group input,
         .input-group select {
             width: 100%;
             padding: 10px;
@@ -57,13 +51,14 @@
             border-radius: 4px;
         }
 
-        button[type="submit"] {
-            width: 100%;
-            padding: 10px;
+        button {
+            width: auto; 
+            padding: 5px 10px; 
+            font-size: 0.9em; 
             background-color: #5C6BC0;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 1px;
             cursor: pointer;
         }
 
@@ -176,32 +171,35 @@
                     <option value="Employee">Employee</option>
                 </select>
             </div>
-          <button type="button" id="confirmRegistration">Confirm Registration</button>
-                  <button type="button" id="cancelRegistration">Cancel Registration</button>
-              </form>
-              <div class="login-button">
-                  Already have an account? Try <a href="index.html">Logging In</a> Instead.
-              </div>
-          </div>
+            <button type="button" id="confirmRegistration">Confirm Registration</button>
+            <button type="button" id="cancelRegistration">Cancel Registration</button>
+        </form>
+    
+        <div class="login-link">
+            Already have an account? Try <a href="/">Logging In</a> Instead.
+        </div>
+    </div>
 
-          <div class="confirmation-popup" id="confirmationPopup">
-              <div class="confirmation-popup-content">
-                  <p>Welcome to the family. Here is your designated ID:**** <span id="userID"></span></p>
-                  <div class="confirmation-popup-buttons">
-                      <button class="confirm-button" id="confirmPopup">OK</button>
-                      <button class="cancel-button" id="cancelPopup">Cancel Registration</button>
-                  </div>
-              </div>
-          </div>
-
+    <div class="confirmation-popup" id="confirmationPopup">
+        <div class="confirmation-popup-content">
+            <p>Welcome to the family. Here is your designated ID:**** <span id="userID"></span></p>
+            <div class="confirmation-popup-buttons">
+                <button class="confirm-button" id="confirmPopup">OK</button>
+                <button class="cancel-button" id="cancelPopup">Cancel Registration</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        const registrationForm = document.getElementById("registrationForm");
         const passwordField = document.getElementById("password");
         const confirmPasswordField = document.getElementById("confirmPassword");
         const passwordError = document.getElementById("password-error");
         const confirmationPopup = document.getElementById("confirmationPopup");
         const userIDSpan = document.getElementById("userID");
+        const confirmRegistrationButton = document.getElementById("confirmRegistration");
+        const cancelRegistrationButton = document.getElementById("cancelRegistration");
+        const confirmPopupButton = document.getElementById("confirmPopup");
+        const cancelPopupButton = document.getElementById("cancelPopup");
 
         // Password validation
         confirmPasswordField.addEventListener("input", () => {
@@ -212,16 +210,9 @@
             }
         });
 
-        // Show password length message on focus
         passwordField.addEventListener("focus", () => {
             passwordError.innerText = "Passwords must be at least 7 characters";
         });
-
-        // Confirmation popup
-        const confirmRegistrationButton = document.getElementById("confirmRegistration");
-        const cancelRegistrationButton = document.getElementById("cancelRegistration");
-        const confirmPopupButton = document.getElementById("confirmPopup");
-        const cancelPopupButton = document.getElementById("cancelPopup");
 
         confirmRegistrationButton.addEventListener("click", () => {
             if (passwordField.value !== confirmPasswordField.value) {
@@ -235,23 +226,21 @@
         });
 
         cancelRegistrationButton.addEventListener("click", () => {
-            window.location.href = "index.html";
+            window.location.href = '/';
         });
 
         confirmPopupButton.addEventListener("click", () => {
-            // Simulate generating a random user ID (customize this part)
             const userType = document.getElementById("userType").value;
             const randomID = generateRandomID(userType);
             userIDSpan.innerText = randomID;
             confirmationPopup.style.display = "none";
-            window.location.href = "index.html";
+            window.location.href = '/';
         });
 
         cancelPopupButton.addEventListener("click", () => {
             confirmationPopup.style.display = "none";
         });
 
-        // Function to generate a random ID based on user type
         function generateRandomID(userType) {
             const digits = Math.floor(Math.random() * 9000) + 1000;
             const userTypeDigit = userType === "Employee" ? "1" : "0";
